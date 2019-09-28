@@ -1,0 +1,69 @@
+<ul class="nav justify-content-end nav-tabs">
+  <li class="nav-item">
+    <p class="nav-link" (click)='nav_route("")'>Home</p>
+  </li>
+  <li class="nav-item">
+    <p class="nav-link disabled" (click)='nav_route("plans")'>Service</p>
+  </li>
+
+   <li class="nav-item">
+    	<p class="nav-link" (click)='nav_route("orders")'>Orders</p>
+  </li>
+  <li class="nav-item">
+    	<p class="nav-link disabled" (click)='nav_route("orders")'>Tracking</p>
+  </li>
+  <li class="nav-item">
+    	<p class="nav-link active" (click)='nav_route("payments")'>Payment</p>
+  </li>
+</ul>
+
+<div class="container mt-5">
+  <h2 style="margin-left: 40%">Checkout Cart</h2> <br>
+		
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Plan</th>
+					<th scope="col">Recurring Payment</th>
+					<th scope="col">Span</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">1</th>
+					<td>{{checkout_plan.name}}</td>
+
+					<td><span *ngIf="checkout_plan.recurring_payment">
+								<div class="card-icon">
+					            <img src="https://image.flaticon.com/icons/png/512/368/368633.png"style="height: 20px;margin: auto;">
+					        </div>
+					    </span>
+					    <span *ngIf="!checkout_plan.recurring_payment">
+								<div class="card-icon">
+					            <img src="https://image.flaticon.com/icons/svg/17/17124.svg"style="height: 15px;margin: auto;">
+					        </div>
+					    </span>
+					</td>
+					
+					<td>{{checkout_plan.recurring_span}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+
+  		<div class="row mt-5">
+	    	<div class="col-md-3" style="margin: auto">
+	      		<button (click)="pay(20)" class="btn btn-primary btn-block">Pay $20</button>
+	     	</div>
+	      	<p class="mt-5" style="margin: auto">
+			  	For Demo Purpose:
+			      card number <b>4242 4242 4242 4242</b>, 
+			      a random three-digit CVC number, 
+			      any expiration date in the future.
+			</p>
+		</div>
+
+		
+</div>

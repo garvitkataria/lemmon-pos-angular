@@ -1,0 +1,9 @@
+{
+	"/" : {
+        "target" : "Https://anuragintern.appspot.com/services", 
+        "secure" : true,
+        "logLevel" : "debug",
+        "changeOrigin": true
+    }
+
+}

@@ -1,0 +1,145 @@
+<ul class="nav justify-content-end nav-tabs">
+  <li class="nav-item">
+    <p class="nav-link" href="#" (click)='nav_route("")'>Home</p>
+  </li>
+  <li class="nav-item">
+    <p class="nav-link active" href="/plans" (click)='nav_route("plans")'>Service</p>
+  </li>
+
+   <li class="nav-item">
+    	<p class="nav-link" href="/orders" (click)='nav_route("orders")'>Orders</p>
+  </li>
+  <li class="nav-item">
+    	<p class="nav-link disabled" href="/orders" (click)='nav_route("orders")'>Tracking</p>
+  </li>
+  <li class="nav-item">
+    	<p class="nav-link disabled" href="/payments" (click)='nav_route("payments")'>Payment</p>
+  </li>
+</ul>
+
+
+<br>
+<div style="margin-left: 40%">
+    <h2 >{{service.name}}</h2>
+</div>
+<br>
+<br>
+
+
+<div class="card" >
+	<div class="card-body">
+   
+    
+  
+
+		<div class="row" style="padding: 3%">
+			<div class="col-8">
+		    	<p class="card-text">{{service.description}}</p>
+		    </div>
+		    <div class="col-1"></div>
+		    <div class="col">
+		    	<img src="{{service.img}}" class="card-img-top" alt="..." >
+		    </div>
+		</div>
+	</div>
+</div>
+
+
+
+<br>
+<div style="margin-left: 45%">
+    <h4 >Plans</h4>
+</div>
+<br>
+<br>
+
+<div class="row" style="margin-left: 5%;">
+    <div class="card" style="width: 30%; padding: 10" *ngFor="let plan of my_plans">
+        <div class="card-body">
+            <h5 class="card-title">{{plan.name}}</h5>
+            <p class="card-text">{{plan.description}}</p>
+            <hr>
+            <div class="row">
+            	<div class="col" *ngIf="plan.recurring_payment">
+            		Recurring Payment
+            	</div>
+            	<div class="col">
+            		{{plan.recurring_span}}
+            	</div>
+            	<div class="col">
+            		<a  class="btn btn-primary" style="margin-left: 40%;" (click)="showService(plan)">Buy</a>
+            	</div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<hr>
+<br>
+<br>
+<div class="col-md-8" style="margin: auto;" *ngIf="buy_shipping_plan_flag">
+			  <div class="form-group">
+			    <label for="exampleFormControlSelect1">Choose Plan</label>
+			    <select class="form-control" id="exampleFormControlSelect1">
+			      <option *ngFor="let i of my_plans">{{i.name}}</option>
+			    </select>
+			  </div>
+		  <br>
+		  <h4>Shipment From:</h4>
+		  <div class="form-group">
+		    <label for="inputAddress2">Address</label>
+		    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+		  </div>
+		  <div class="form-row">
+		    <div class="form-group col-md-6">
+		      <label for="inputCity">City</label>
+		      <input type="text" class="form-control" id="inputCity">
+		    </div>
+		    <div class="form-group col-md-4">
+		      <label for="inputState">State</label>
+		      <input type="text" class="form-control" id="inputState">
+		    </div>
+		    <div class="form-group col-md-2">
+		      <label for="inputZip">Zip</label>
+		      <input type="text" class="form-control" id="inputZip">
+		    </div>
+		  </div>
+
+		  <br>
+		  <h4>Shipment To:</h4>
+		  <div class="form-group">
+		    <label for="inputAddress2">Address</label>
+		    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+		  </div>
+		  <div class="form-row">
+		    <div class="form-group col-md-6">
+		      <label for="inputCity">City</label>
+		      <input type="text" class="form-control" id="inputCity">
+		    </div>
+		    <div class="form-group col-md-4">
+		      <label for="inputState">State</label>
+		      <input type="text" class="form-control" id="inputState">
+		    </div>
+		    <div class="form-group col-md-2">
+		      <label for="inputZip">Zip</label>
+		      <input type="text" class="form-control" id="inputZip">
+		    </div>
+		  </div>
+
+		  	<div class="form-group">
+			    <label for="exampleFormControlTextarea1">Notes</label>
+			    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+			 </div>
+		  <button type="submit" class="btn btn-primary" (click)="checkout()">Proceed to Payment</button>
+	</div>
+	<div class="col-md-8" style="margin: auto;" *ngIf="buy_tracking_plan_flag">
+			  <div class="form-group row">
+			    <label for="staticEmail" class="col-sm-2 col-form-label">Plan</label>
+			    <div class="col-sm-10">
+			      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{buy_plan.name}}">
+			    </div>
+			  </div>
+		  <button type="submit" class="btn btn-primary" (click)="checkout()">Proceed to Payment</button>
+	</div>
+
+<br>

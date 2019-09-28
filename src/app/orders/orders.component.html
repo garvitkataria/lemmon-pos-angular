@@ -1,0 +1,68 @@
+<ul class="nav justify-content-end nav-tabs">
+  <li class="nav-item">
+    <p class="nav-link"  (click)='nav_route("")'>Home</p>
+  </li>
+  <li class="nav-item">
+    <p class="nav-link disabled"  (click)='nav_route("plans")'>Service</p>
+  </li>
+
+   <li class="nav-item">
+      <p class="nav-link active" (click)='nav_route("orders")'>Orders</p>
+  </li>
+  <li class="nav-item">
+      <p class="nav-link disabled"  (click)='nav_route("orders")'>Tracking</p>
+  </li>
+  <li class="nav-item">
+      <p class="nav-link disabled" (click)='nav_route("payments")'>Payment</p>
+  </li>
+</ul>
+
+
+<br>
+<div style="margin-left: 40%">
+    <h2 >Shipping Orders</h2>
+</div>
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Tracking Id</th>
+      <th scope="col">Date</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Status</th>
+      <th scope="col">Expected Delivery</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody >
+    <tr *ngFor="let i of orders;">
+      <th scope="row">{{i._id}}</th>
+      <!-- <td> -->
+        <!-- <span *ngIf="i.plan.recurring_payment">
+      			<div class="card-icon">
+                    <img src="https://image.flaticon.com/icons/png/512/368/368633.png"style="height: 20px;margin: auto;">
+                </div>
+            </span>
+            <span *ngIf="!i.plan.recurring_payment">
+      			<div class="card-icon">
+                    <img src="https://image.flaticon.com/icons/svg/17/17124.svg"style="height: 15px;margin: auto;">
+                </div>
+            </span> -->
+       <!-- </td> -->
+
+      <td>{{i._created}}</td>
+      <td>
+      	{{i.from_street}}, {{i.from_city}} {{i.from_zip}}<br>
+      	{{i.from_phone}}
+      </td>
+      <td>{{i.to_street}}, {{i.to_city}} {{i.to_zip}}<br>
+      	{{i.to_phone}}
+      </td>
+      <td>{{i.status}}</td>
+      <td>{{i.delivery_date}}</td>
+
+    </tr>
+  </tbody>
+</table>

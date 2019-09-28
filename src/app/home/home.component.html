@@ -1,0 +1,37 @@
+<ul class="nav justify-content-end nav-tabs">
+  <li class="nav-item">
+    <p class="nav-link active" href="#">Home</p>
+  </li>
+  <li class="nav-item">
+    <p class="nav-link disabled" href="/plans"  tabindex="-1" aria-disabled="true">Service</p>
+  </li>
+
+   <li class="nav-item">
+    	<p class="nav-link" (click)='nav_route("orders")'>Orders</p>
+  </li>
+  <li class="nav-item">
+    	<p class="nav-link disabled" (click)='nav_route("orders")'>Tracking</p>
+  </li>
+  <li class="nav-item">
+    	<p class="nav-link disabled" (click)='nav_route("payments")' >Payment</p>
+  </li>
+</ul>
+
+<br>
+<div style="margin-left: 40%">
+    <h2 >Our Services</h2>
+</div>
+<br>
+<br>
+
+
+<div class="row" style="margin-left: 5%;">
+    <div class="card" style="width: 27%; margin: 2%" *ngFor="let service of services">
+        <img src="{{service.img}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{service.name}}</h5>
+            <!-- <p class="card-text">{{service.description}}</p> -->
+            <a  class="btn btn-primary" style="margin-left: 40%; color: white" (click)="showService(service)">Enter</a>
+        </div>
+    </div>
+</div>
